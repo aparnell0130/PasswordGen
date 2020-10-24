@@ -1,15 +1,15 @@
 // Assignment Code
  // special character array
- var speChars = ["!","@","$","%","^","&","*","(",")"]; 
+ var speChars = ["!@#$%^&*()"]; 
 
 // number array
-var numbers = ["1","2","3","4","5","6","7","8","9","10"];
+var numbers = ["123456789"];
 
 // lower case array
-var lowerCases = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var lowerCases = ["abcdefghijklmnopqrstuvwxyz"];
 
 // upper case array 
-var upperCases = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var upperCases = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
 var generateBtn = document.querySelector("#generate");
 
@@ -27,48 +27,68 @@ function generatePassword() {
   
   // password length
   var pwrdLength = prompt("Choose password length, must be between 8 and 128 characters");
+
+  // checks password length is within parameters 
   if( pwrdLength < 8 || pwrdLength > 128){
     alert("Password length incorrect");
     return;
   }
+
+  // checks password length is a number
   if(isNaN(pwrdLength)){
     alert("Please select a number for password length");
     return;
   }
   
+  // empty array for types of characters chosen
   var pwdChar = [];
+  
+  // empty password string for generated password
+  var password = "";
+
 
   var speChar = confirm("Would you like to use special characters for your password");
 
-  if (speChar){
-    pwdChar.push(speChars);
-  }
+
 
   var number = confirm("Would you like to use numbers for your password");
  
-  if (number){
-    pwdChar.push(numbers);
-  }
+
 
   var lowerCase = confirm("Would you like to use lowercase letters for your password");
 
-   if (lowerCase){
-    pwdChar.push(lowerCases);
-  }
+
 
   var upperCase = confirm("Would you like to use uppercase letters for your password");
 
-   if (upperCase){
-    pwdChar.push(upperCases);
+  if (speChar){
+
+    pwdChar+=speChars;
   }
 
-console.log(pwdChar)
+  if (lowerCase){
+    pwdChar+=lowerCases;
+  }
+
+  if (number){
+    pwdChar+=numbers;
+  }
+
+   if (upperCase){
+    pwdChar+=upperCases;
+  }
+   if (pwdChar.length < 1 || pwdChar == undefined){
+     alert("Please select at least one character type for password");
+     return;
+   }
+console.log(pwrdLength, pwdChar);
 
    
-var password = "";
-// while (password.length < pwrdLength){
-   
-// }
+while (password.length < pwrdLength){
+  var randomNum = pwdChar[Math.floor(Math.random()*pwdChar.length)];
+  password+=randomNum;
+}
+
 return password;
 };
 
