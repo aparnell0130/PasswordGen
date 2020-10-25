@@ -34,7 +34,7 @@ return password;
 
 ```
 
-![ALT Text](passworgGen.gif)
+![ALT Text](assets/passworgGen.gif)
 
 ## License
 - N/A 
