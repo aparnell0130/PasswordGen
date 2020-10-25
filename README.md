@@ -24,7 +24,7 @@ For each character type the user chooses, one random character will be added to 
 
 
 ```JS
-
+// loop to randomly grab characters from chosen characters array
 while (password.length < pwrdLength){
   var randomNum = pwdChar[Math.floor(Math.random()*pwdChar.length)];
   password+=randomNum;
